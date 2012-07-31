@@ -38,5 +38,14 @@ public class BitArrayGenoType implements IGenoType<boolean[]> {
     public BitArrayGenoType getInstance() {
         return new BitArrayGenoType();
     }
-
+    
+    @Override
+    public boolean equals(Object obj) {
+        return getChromosome().equals(obj);
+    }
+    
+    @Override
+    public int hashCode() {
+        return getChromosome().hashCode();
+    }
 }
