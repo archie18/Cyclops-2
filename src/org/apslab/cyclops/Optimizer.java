@@ -5,11 +5,7 @@
 
 package org.apslab.cyclops;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Genetic algorithm implementation
@@ -89,6 +85,7 @@ public class Optimizer {
         Collections.sort(populationCpy);
         generationTop = populationCpy.get(0);
         overallTop = populationCpy.get(0);
+        Set<Individual> allIndividuals = new HashSet<Individual>();
 
         // Generation loop
         int iteration = 0;
@@ -171,6 +168,7 @@ public class Optimizer {
             }
             System.out.println("generationTop: " + generationTop);
             System.out.println("overallTop: " + overallTop);
+            allIndividuals.addAll(population);
 
             // Increase iteration counter
             iteration++;
@@ -178,6 +176,13 @@ public class Optimizer {
 
         // Final logging
         //System.out.println(SwissArmyKnife.calculateCoordinates(overallTop.getGenoType().getSnake(), overallTop.getGenoType().getChromosome()));
+        System.out.println("Done.");
+        List<Individual> allIndividualsList = new ArrayList<Individual>(allIndividuals);
+        Collections.sort(allIndividualsList);
+        System.out.println("All individuals:");
+        for (Individual ind : allIndividualsList) {
+            System.out.println(ind);
+        }
 
     }
 
